@@ -1,0 +1,23 @@
+---
+import { turso } from "../turso";
+const { rows } = await turso.execute('SELECT * FROM users')
+
+---
+
+{rows.map((post) =>(
+    <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-purple-800 animate-blurred-fade-in">
+        <div class="flex flex-col items-center pb-7">
+            <img class="w-24 h-24 mb-2 mt-2 rounded-full shadow-lg" src="{{post.logo_user}}" alt="user image"/>
+            <a href="/{{post.name}}">
+            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{post.name}</h5>
+            </a>
+            <div class="flex flex-col items-start">
+                <span class="text-sm text-gray-500 dark:text-gray-400">Nº Participaciones</span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">Victorias</span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">Última Participación</span>
+            </div>
+        </div>
+    </div>
+))}
+
+
